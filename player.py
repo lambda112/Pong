@@ -1,5 +1,7 @@
 from turtle import Turtle
 
+Y_BOUND = 200
+
 class Player():
     def __init__(self) -> None:
         self.player = Turtle(shape="square")
@@ -8,8 +10,16 @@ class Player():
         self.player.penup()
 
     def upward(self) -> None:
-        self.player.sety(self.player.ycor() + 20)
+        if self.player.ycor() < Y_BOUND:
+            self.player.sety(self.player.ycor() + 20)
+            return True
+        
+        return False
     
     def downward(self) -> None:
-        self.player.sety(self.player.ycor() - 20)
+        if self.player.ycor() > -Y_BOUND:
+            self.player.sety(self.player.ycor() - 20)
+            return True
+        
+        return False
     
